@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title nodeAuth
+    link(href='/stylesheets/bootstrap.css', rel='stylesheet')
+    link(href='/stylesheets/style.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-inverse
+      .container
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(class=(title == "Members"?'active':''))(href='/') node auth
+        #navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            if !isUser
+              li(class=(title == "Register"?'active':''))
+                a(href='/users/register') Register
+              li(class=(title == "Login"?'active':''))
+                a(href='/users/login') Login
+          ul.nav.navbar-nav.navbar-right
+            if isUser
+              li
+                a(href='/users/logout/') logout
+    .container
+      != messages()
+      block content
+    
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js")
+    script(src="javascripts/bootstrap.js")
